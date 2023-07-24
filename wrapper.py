@@ -66,22 +66,24 @@ def queryBot(bot,startDate,endDate,firstEntries):
 
   return response
 
-def get_token_names(response):
-  token_types=resp['data']['alerts']['alerts'][0]['metadata']['tokenTypes']
+def get_token_names(shortresponse):
+  token_types=shortresponse['metadata']['tokenTypes']
   token_types=token_types.split(",")
   return token_types
 
-def get_addresses(response):
-  return response['data']['alerts']['alerts'][0]['addresses']
+def get_addresses(shortresponse):
+  return shortresponse['addresses']
 
-def get_addresses_families(response):
-  txhash=response['data']['alerts']['alerts'][0]['source']['transactionHash']
-  addresses=get_addresses(response)
+def get_addresses_families(shortresponse):
+  txhash=shortresponse['source']['transactionHash']
+  addresses=get_addresses(shortresponse)
   ##### ADD CHECK: if not in graph:
   for address in addresses:
     Gene().masterSleuth(address,"anom_tx"+"".join(list(txhash)[2:6])+"_addr"+"".join(list(address)[2:6]),100,False)
     print(address)
 
-resp=queryBot("0x2e51c6a89c2dccc16a813bb0c3bf3bbfe94414b6a0ea3fc650ad2a59e148f3c8",startDate,endDate,firstEntries=1)
+resp=queryBot("0x2e51c6a89c2dccc16a813bb0c3bf3bbfe94414b6a0ea3fc650ad2a59e148f3c8",startDate,endDate,firstEntries=5)
 
-get_addresses_families(resp)
+for i in resp['data']['alerts']['alerts']:
+  get_addresses_families(i)
+#get_addresses_families(resp)

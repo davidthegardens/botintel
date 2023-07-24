@@ -1,0 +1,2 @@
+,~id,~label,address:string,parent:string,children:list
+0,eth:0xae2fc483527b8ef99eb5d9b44875f005ba1fae13,EOA,0xae2fc483527b8ef99eb5d9b44875f005ba1fae13,,[]

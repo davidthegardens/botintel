@@ -1,0 +1,2 @@
+,~id,~label,address:string,abi:string,sourceHash:string,parent:string,children:list
+0,eth:0x3e1ec5b84d0b3013c9aec6fd3b8aee0cd30ace01,CONTRACT,0x3e1ec5b84d0b3013c9aec6fd3b8aee0cd30ace01,UNVERIFIED,1d05ed145936447def88ea92b3b9988a04010f7f,0xe5a2da034210dec8208b800dd2b788c20d521562,[]
